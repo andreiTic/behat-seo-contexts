@@ -6,9 +6,15 @@ pipeline {
 
   }
   stages {
-    stage('build') {
+    stage('composer install') {
+      agent any
       steps {
-        sh 'php --version'
+        sh 'composer install'
+      }
+    }
+    stage('test') {
+      steps {
+        sh './vendor/bin/behat --format=progress --no-interaction'
       }
     }
   }

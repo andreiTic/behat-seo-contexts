@@ -5,7 +5,7 @@ pipeline {
       agent {
         docker {
           image 'composer'
-          args '--rm --interactive --tty --volume'
+          args '--rm --interactive --tty  --volume $PWD:/app'
         }
 
       }

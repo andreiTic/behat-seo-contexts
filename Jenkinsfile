@@ -1,11 +1,10 @@
 pipeline {
-  agent any
-  stages {
-    stage('install') {
-      agent any
-      steps {
-        sh 'composer install && composer serve &> /dev/null &'
-      }
+ agent { docker { image 'php' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'php --version'
+            }
+        }
     }
-  }
 }

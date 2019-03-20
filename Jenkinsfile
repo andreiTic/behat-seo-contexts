@@ -4,7 +4,8 @@ pipeline {
     stage('test') {
       agent {
         docker {
-          image 'composer/composer'
+          image 'composer'
+          args '--rm --interactive --tty --volume'
         }
 
       }

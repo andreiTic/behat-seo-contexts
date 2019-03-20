@@ -7,7 +7,13 @@ pipeline {
   }
   stages {
     stage('composer install') {
-      agent any
+      agent {
+        docker {
+          image 'composer'
+          args '--tty --volume $PWD:/app'
+        }
+
+      }
       steps {
         sh 'composer install'
       }
